@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Financer</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <div class="brand">
+        <div class="logo">F</div>
+        <div class="brand-text">
+          <h1>Financer</h1>
+          <p class="sub">Sign in to continue to your loan dashboard</p>
+        </div>
+      </div>
+
+      <form id="loginForm" class="form" novalidate>
+        <label class="field">
+          <span class="label-text">Email or Mobile</span>
+          <div class="pw-wrapper">
+            <input id="username" name="username" type="email" placeholder="Enter your Email/number" required />
+          </div>
+          <small class="error" id="userError"></small>
+        </label>
+
+        <label class="field">
+          <span class="label-text">Password</span>
+          <div class="pw-wrapper">
+            <input id="password" name="password" type="password" placeholder="Enter your password" required />
+            <button type="button" id="togglePw" class="toggle-pw" aria-label="show password">👁️</button>
+          </div>
+          <small class="error" id="pwError"></small>
+        </label>
+
+        <div class="row between">
+          <label class="remember">
+            <input id="remember" type="checkbox" />
+            <span>Remember me</span>
+          </label>
+          <a class="link" href="#" id="forgot">Forgot?</a>
+        </div>
+
+        <button id="signinBtn" class="btn primary" type="submit">
+          <span id="btnText">Sign in</span>
+          <span id="loader" class="loader" aria-hidden="true"></span>
+        </button>
+
+        <div class="or">or</div>
+
+        <button type="button" class="btn ghost" id="signupBtn">Create account</button>
+
+        <p class="foot">By continuing you agree to our <a href="#">Terms</a> and <a href="#">Privacy</a>.</p>
+      </form>
+    </section>
+
+    <aside class="side">
+      <h2>Get fast credit, instantly</h2>
+      <p>Apply for loans, check EMI, and manage repayments — all in one place.</p>
+      <ul class="benefits">
+        <li>Quick approvals</li>
+        <li>Transparent fees</li>
+        <li>Secure & encrypted</li>
+      </ul>
+    </aside>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

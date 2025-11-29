@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI Calculator</title>
+    <style>
+        :root{
+  --bg:#0357d4;
+  --card:#ffffff;
+  --primary:#225dfe;
+  --muted:#6b7280;
+  --accent:#eef6ff;
+  --danger:#ef4444;
+  --radius:12px;
+  --glass: rgba(11,99,255,0.06);
+  font-size:16px;
+}
+        body {
+            font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,var(--bg),#f30606);
+            margin: 0;
+            padding: 20px;
+            height: 100vh;
+        }
+        h2 {
+            background-color: #225dfe;
+            color: white;
+            padding: 10px;
+        }
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 700px;
+            margin: auto;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color:#225dfe;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #225dfe;
+        }
+        .emi-display {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <form id="loanForm">
+        <div class="section">
+            <h2>EMI Calculator</h2>
+            <label>Loan Amount (₹)</label>
+            <input type="number" id="loanAmount" required>
+
+```
+        <label>Loan Tenure (Months)</label>
+        <input type="number" id="loanTenure" required>
+        
+        <label>Purpose of Loan</label>
+        <select id="loanPurpose" required>
+            <option value="">Select</option>
+            <option value="Personal">Personal</option>
+            <option value="Education">Education</option>
+            <option value="Home">Home</option>
+            <option value="Car">Car</option>
+            <option value="Business">Business</option>
+        </select>
+        
+        <label>Interest Rate (%)</label>
+        <input type="number" id="interestRate" value="10" readonly>
+        
+        <div class="emi-display" id="emiDisplay">Estimated EMI: ₹0</div>
+        
+        <button type="submit">Proceed</button>
+    </div>
+</form>
+
+<script>
+    const loanAmount = document.getElementById('loanAmount');
+    const loanTenure = document.getElementById('loanTenure');
+    const interestRate = document.getElementById('interestRate');
+    const emiDisplay = document.getElementById('emiDisplay');
+    const form = document.getElementById('loanForm');
+
+    function calculateEMI(principal, rate, months) {
+        let monthlyRate = rate / (10 * 100);
+        let emi = principal * monthlyRate * Math.pow(1 + monthlyRate, months) / (Math.pow(1 + monthlyRate, months) - 1);
+        return emi.toFixed(0);
+    }
+
+    function updateEMI() {
+        const principal = parseFloat(loanAmount.value) || 0;
+        const months = parseInt(loanTenure.value) || 0;
+        const rate = parseFloat(interestRate.value);
+        if(principal > 0 && months > 0) {
+            const emi = calculateEMI(principal, rate, months);
+            emiDisplay.textContent = `Estimated EMI: ₹${emi}`;
+        } else {
+            emiDisplay.textContent = `Estimated EMI: ₹0`;
+        }
+    }
+
+    loanAmount.addEventListener('input', updateEMI);
+    loanTenure.addEventListener('input', updateEMI);
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Loan details submitted! Proceeding to verification...');
+       
+        window.location.href = 'verification.html';
+    });
+</script>
+```
+
+</body>
+</html>

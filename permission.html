@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Permissions – Loan App</title>
+  <style>
+    :root{
+  --bg:#0357d4;
+  --card:#ffffff;
+  --primary:#225dfe;
+  --muted:#6b7280;
+  --accent:#eef6ff;
+  --danger:#ef4444;
+  --radius:12px;
+  --glass: rgba(11,99,255,0.06);
+  font-size:16px;
+}
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+       background: linear-gradient(135deg,var(--bg),#f30606);
+      color: #111;
+      padding: 20px;
+    }
+
+    .deny-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 16px;
+      color: #7b7b7b;
+      cursor: pointer;
+    }
+
+    h1 {
+      margin-top: 60px;
+      font-size: 32px;
+      font-weight: 700;
+    }
+    p.subtitle {
+      color: #ffffff;
+      font-size: 16px;
+      margin-top: -10px;
+    }
+
+    .perm-box {
+      display: flex;
+      align-items: flex-start;
+      margin-top: 25px;
+      padding: 15px;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      transition: 0.2s;
+    }
+    .perm-box:hover {
+      background-color: #f9f9f9;
+      color: #000000;
+    }
+    .perm-box i {
+      font-size: 22px;
+      margin-right: 15px;
+    }
+    .perm-content {
+      flex: 1;
+    }
+    .perm-content:hover {
+    color: #000000;
+    }
+    .perm-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .perm-desc {
+      margin-top: 5px;
+      color: #fffefe;
+      font-size: 15px;
+      line-height: 1.4;
+      max-width: 90%;
+    }
+    .perm-desc:hover{
+      color: #000000;
+    }
+    
+    .perm-checkbox {
+      width: 20px;
+      height: 20px;
+      margin-left: 15px;
+      cursor: pointer;
+      accent-color: #225dfe;
+    }
+
+    .button-group {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      border: none;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+    }
+
+    .btn-deny {
+      background: #e0e0e0;
+      color: #666;
+    }
+    .btn-deny:hover {
+      background: #d0d0d0;
+    }
+
+    .btn-allow {
+      background:#225dfe;
+      color: white;
+    }
+    .btn-allow:hover {
+      background: #225dfe;
+    }
+
+    .btn:active {
+      transform: scale(0.95);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="deny-btn" onclick="denyAll()">Deny All</div>
+
+  <h1>Let's get started</h1>
+  <p class="subtitle">We need some permissions to continue</p>
+
+  
+  <div class="perm-box">
+    <i></i>
+    <div class="perm-content">
+      <div class="perm-title">SMS</div>
+      <div class="perm-desc">
+        We sync SMS to verify your device and prevent fraud during loan processing.
+      </div>
+    </div>
+    <input type="checkbox" class="perm-checkbox" id="smsPermission" checked>
+  </div>
+
+  
+  <div class="perm-box">
+    <i></i>
+    <div class="perm-content">
+      <div class="perm-title">Phone</div>
+      <div class="perm-desc">
+        We collect the phone number to match your SIM with your registered account.
+      </div>
+    </div>
+    <input type="checkbox" class="perm-checkbox" id="phonePermission" checked>
+  </div>
+
+  
+  <div class="perm-box">
+    <i></i>
+    <div class="perm-content">
+      <div class="perm-title">Location</div>
+      <div class="perm-desc">
+        We use your location to ensure security and provide seamless loan services.
+      </div>
+    </div>
+    <input type="checkbox" class="perm-checkbox" id="locationPermission" checked>
+  </div>
+
+  
+  <div class="button-group">
+    <button class="btn btn-deny" onclick="denyAll()">✕</button>
+    <button class="btn btn-allow" onclick="allowAll()">✓</button>
+  </div>
+
+  <script>
+    function allowAll() {
+      document.getElementById('smsPermission').checked = true;
+      document.getElementById('phonePermission').checked = true;
+      document.getElementById('locationPermission').checked = true;
+      
+      alert("All permissions accepted! Redirecting to profile...");
+      window.location.href = "profile.html"; 
+    }
+
+    function denyAll() {
+      document.getElementById('smsPermission').checked = false;
+      document.getElementById('phonePermission').checked = false;
+      document.getElementById('locationPermission').checked = false;
+      alert("Permissions denied. You can enable them later in settings.");
+    }
+  </script>
+
+</body>
+</html>

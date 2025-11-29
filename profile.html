@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile Form</title>
+    <style>
+      :root {
+        --bg: #0357d4;
+        --card: #ffffff;
+        --primary: #225dfe;
+        --muted: #6b7280;
+        --accent: #eef6ff;
+        --danger: #ef4444;
+        --radius: 12px;
+        --glass: rgba(11, 99, 255, 0.06);
+        font-size: 16px;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, var(--bg), #f30606);
+        margin: 0;
+        padding: 20px;
+      }
+      h2 {
+        background-color: #225dfe;
+        color: white;
+        padding: 10px;
+      }
+      form {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 700px;
+        margin: auto;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+      label {
+        display: block;
+        margin-top: 10px;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        transition: 0.3s ease;
+      }
+      input:hover,
+      select:hover {
+        border-color: #225dfe;
+        box-shadow: 0 0 5px rgba(34, 93, 254, 0.3);
+      }
+      input:focus,
+      select:focus {
+        outline: none;
+        border-color: #225dfe;
+        box-shadow: 0 0 8px rgba(34, 93, 254, 0.5);
+      }
+      input[type="file"] {
+        padding: 3px;
+      }
+      .section {
+        margin-bottom: 20px;
+      }
+      button {
+        background-color: #225dfe;
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 16px;
+        transition: 0.3s ease;
+      }
+      button:hover {
+        background-color: #1a4dd6;
+        box-shadow: 0 0 10px rgba(34, 93, 254, 0.4);
+        transform: translateY(-2px);
+      }
+      button:active {
+        transform: translateY(0);
+      }
+      button:hover {
+        background-color: #225dfe;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <div class="section">
+        <h2>Basic Details</h2>
+        <label>Full Name</label>
+        <input type="text" name="fullName" required />
+        <label>Date of Birth (DOB)</label>
+        <input type="date" name="dob" required />
+        <label>Gender</label>
+        <select name="gender" required>
+          <option value="">Select</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+        <label>Father’s Name / Mother’s Name</label>
+        <input type="text" name="parentName" required />
+        <label>Address</label>
+        <input type="text" name="address" required />
+        <label>Pincode</label>
+        <input type="text" name="pincode" required />
+        <label>City, State</label>
+        <input type="text" name="cityState" required />
+      </div>
+
+      <div class="section">
+        <h2>Contact Details</h2>
+        <label>Mobile Number</label>
+        <input type="tel" name="mobile" required />
+        <label>Email Address</label>
+        <input type="email" name="email" required />
+      </div>
+
+      <div class="section">
+        <h2>Identity Documents (KYC)</h2>
+        <label>Aadhaar Number</label>
+        <input type="text" name="aadhaarNumber" required />
+        <label>Aadhaar Linked Mobile (yes/no)</label>
+        <select name="aadhaarLinkedMobile" required>
+          <option value="">Select</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+        <label>Aadhaar Front Image</label>
+        <input type="file" name="aadhaarFront" accept=".jpg*" required />
+        <label>Aadhaar Back Image</label>
+        <input type="file" name="aadhaarBack" accept=".jpg" required />
+        <label>PAN Number</label>
+        <input type="text" name="panNumber" required />
+        <label>PAN Image</label>
+        <input type="file" name="panImage" accept=".jpg" required />
+      </div>
+
+      <div class="section">
+        <h2>Bank Details</h2>
+        <label>Bank Name</label>
+        <select name="bankName" required>
+          <option value="">Select Bank</option>
+          <option value="State Bank of India">State Bank of India</option>
+          <option value="HDFC Bank">HDFC Bank</option>
+          <option value="Bank of Baroda">Bank of Baroda</option>
+          <option value="Punjab National Bank">Punjab National Bank</option>
+          <option value="Union Bank of India">Union Bank of India</option>
+        </select>
+        <label>Account Number</label>
+        <input type="text" name="accountNumber" required />
+        <label>IFSC Code</label>
+        <input type="text" name="ifsc" required />
+        <label>Account Holder Name</label>
+        <input type="text" name="accountHolder" required />
+        <label>UPI ID (Optional)</label>
+        <input type="text" name="upiId" />
+      </div>
+
+      <div class="section">
+        <h2>Employment Details</h2>
+        <label>Occupation</label>
+        <select name="occupation" required>
+          <option value="">Select</option>
+          <option value="Student">Student</option>
+          <option value="Salaried">Salaried</option>
+          <option value="Self-Employed">Self-Employed</option>
+        </select>
+        <label>Monthly Income</label>
+        <input
+          type="number"
+          name="income"
+          min="15000"
+          placeholder="Minimum 15000"
+          required
+        />
+
+        <label>Company Name (if salaried)</label>
+        <input type="text" name="companyName" />
+        <label>Salary Slip (optional upload)</label>
+        <input type="file" name="salarySlip" accept=".jpg,.pdf" />
+      </div>
+
+      <button type="submit">Submit Profile</button>
+    </form>
+
+    <script>
+      document.querySelector("form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        alert(
+          "Profile submitted successfully! Proceeding to loan eligibility..."
+        );
+        window.location.href = "eligibility.html";
+      });
+    </script>
+  </body>
+</html>
